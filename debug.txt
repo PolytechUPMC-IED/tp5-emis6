@@ -1,0 +1,82 @@
+Question 1)
+
+gcc -g hello.c -o hello
+
+Question 2)
+
+ It shows the memory information of our executive file. 
+ I got  the information below:
+
+==4317== Memcheck, a memory error detector
+==4317== Copyright (C) 2002-2015, and GNU GPL'd, by Julian Seward et al.
+==4317== Using Valgrind-3.11.0 and LibVEX; rerun with -h for copyright info
+==4317== Command: ./hello
+==4317== 
+Hello You !
+==4317== 
+==4317== HEAP SUMMARY:
+==4317==     in use at exit: 0 bytes in 0 blocks
+==4317==   total heap usage: 1 allocs, 1 frees, 1,024 bytes allocated
+==4317== 
+==4317== All heap blocks were freed -- no leaks are possible
+==4317== 
+==4317== For counts of detected and suppressed errors, rerun with: -v
+==4317== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+
+Question 3)
+
+in first line it gives information on the unfreed memory blocks.
+second line it shows the amount of memory used in heap. taken and freed.
+
+Question 4)
+
+ gcc -g mem.c -o mem
+ valgrind ./mem
+
+Question 5)
+	line 6: "main (mem.c:6)"
+	The other given information:
+	"Access not within mapped region at address 0x0": It means that we have tried to access more memory than we are assigned.
+
+Question 6)
+
+There were problems with line 12 and 14. We had not allocated any memory to the pointer p, so we could not assign anything to p[i] and also since we had not allocated a memory block for it we could not free it.
+
+Question 7)
+
+We tried to access a memory we have just freed! so we should just move the freeing part after the loop for.
+
+Question 8)
+
+We have allocated 13 memory blocks but freed only 12 of them so we got a memory leak of size of the memory block which is 80;
+Valgrind output:
+==4744== 
+==4744== HEAP SUMMARY:
+==4744==     in use at exit: 80 bytes in 1 blocks
+==4744==   total heap usage: 13 allocs, 12 frees, 2,528 bytes allocated
+==4744== 
+==4744== LEAK SUMMARY:
+==4744==    definitely lost: 80 bytes in 1 blocks
+==4744==    indirectly lost: 0 bytes in 0 blocks
+==4744==      possibly lost: 0 bytes in 0 blocks
+==4744==    still reachable: 0 bytes in 0 blocks
+==4744==         suppressed: 0 bytes in 0 blocks
+==4744== Rerun with --leak-check=full to see details of leaked memory
+==4744== 
+==4744== For counts of detected and suppressed errors, rerun with: -v
+==4744== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
+Question 9)
+
+It doesn't give a line number it just says there's a memory leak;
+To find more details I used:
+"valgrind --leak-check=full ./mem3"
+
+The problem is in line 11: main (mem3.c:11)
+ 
+Question 10)
+
+The P needed to be freed so I added free(p); in the end of main block.
+
+

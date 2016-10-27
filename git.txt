@@ -1,0 +1,124 @@
+-----------------------------------------------------------------------------------------------------------------
+EXCERCISE 1:
+
+Question 2:
+
+The created directories are:
+drwxr-xr-x 2 mahshid users 4096 Oct 27 09:18 branches
+-rw-r--r-- 1 mahshid users   92 Oct 27 09:18 config
+-rw-r--r-- 1 mahshid users   73 Oct 27 09:18 description
+-rw-r--r-- 1 mahshid users   23 Oct 27 09:18 HEAD
+drwxr-xr-x 2 mahshid users 4096 Oct 27 09:18 hooks
+drwxr-xr-x 2 mahshid users 4096 Oct 27 09:18 info
+drwxr-xr-x 4 mahshid users 4096 Oct 27 09:18 objects
+drwxr-xr-x 4 mahshid users 4096 Oct 27 09:18 refs
+
+Question 4:
+
+What I obtained:
+
+"On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	helloWorld.c
+
+nothing added to commit but untracked files present (use "git add" to track)"
+
+It means that we should use add file or our file would be considered untracked.
+
+Question 5:
+
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   helloWorld.c
+
+Question 7:
+
+"On branch master
+nothing to commit, working directory clean"
+
+
+Question 8:
+
+The result was:
+
+"commit 1aff6db2e38885e79028c8484320f19f2a4bc7ef
+Author: emis6 <khezri.mahshid@gmail.com>
+Date:   Thu Oct 27 09:31:15 2016 +0200
+
+    Super Message: Doing school TP
+
+diff --git a/helloWorld.c b/helloWorld.c
+new file mode 100644
+index 0000000..90337b2
+--- /dev/null
++++ b/helloWorld.c
+@@ -0,0 +1,7 @@
++#include <stdio.h>
++
++int main()
++{
++       printf("Hello World!");
++       return 0;
++}
+"
+
+Shows the author and the one file I have committed. Also my "super" message.
+
+Question 9:
+
+It shows the changes made in the file I changed.
+-----------------------------------------------------------------------------------------------------------------
+EXCERCISE 2:
+
+Question 1:
+I have a new branch other than the master branch:
+
+[mahshid@localhost gitStuff]$ git branch
+* master
+  test
+
+Question 4:
+
+[mahshid@localhost gitStuff]$ git log --graph --decorate --oneline --all
+* 4fb2f9e (HEAD -> test) this is just a commit B C C
+* 1aff6db (master) Super Message: Doing school TP
+
+It shows the relations between branches and the commit messages I put.
+
+Question 5:
+
+What I got after "git merge test"
+
+Updating 1aff6db..4fb2f9e
+Fast-forward
+ helloWorld.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+and after git log --graph --decorate --oneline --all:
+
+* 4fb2f9e (HEAD -> master, test) this is just a commit B C C
+* 1aff6db Super Message: Doing school TP
+
+We see that now master and test are in the same branch.
+
+Question 6:
+
+I changed the file in master branch, made a commit then changed to test edited the same file on the same line then made a commit. After I changed back to master and tried to do a merge that I got this error:
+
+CONFLICT (content): Merge conflict in helloWorld.c
+Automatic merge failed; fix conflicts and then commit the result.
+
+-----------------------------------------------------------------------------------------------------------------
+EXCERCISE 2:
+
+I already had a git accout so I will just use that: emis6
