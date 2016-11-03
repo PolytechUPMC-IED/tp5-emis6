@@ -1,0 +1,6 @@
+Answers to some questions:
+
+Q3:
+with cut command used in this manner:
+
+cut -d"_" -f$COLONNE
